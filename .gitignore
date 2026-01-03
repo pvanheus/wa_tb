@@ -1,0 +1,9 @@
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+# A file containing secrets, not to be shared
+secrets.txt
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

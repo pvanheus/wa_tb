@@ -1,0 +1,12 @@
+[workspace]
+authors = ["Peter van Heusden <pvanheusden@uwc.ac.za>"]
+channels = ["conda-forge", "bioconda"]
+name = "batches"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+galaxy-parsec = ">=1.16.0,<2"
+bioblend = ">=1.7.0,<2"
