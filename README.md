@@ -30,12 +30,16 @@ The `copy_history.py` script (which relies on code not yet in bioblend releases)
 
 #### Invoke workflow
 
-The `invoke_workflow.py` launches the "TB Variant Analysis v1.4.0 - dev - Mycobacterium kraken2 DB" workflow in a chosen history (one of the "WA TB X working" histories).
+The `invoke_workflow.py` launches the "TB Variant Analysis v1.6.0" workflow in a chosen history (one of the "WA TB X working" histories).
 
 
-### Get invocatiion status
+### Get invocation status
 
 The `get_invocation_status.py` scans histories with the pattern "WA TB X working" and checks on their completion status and also the status of association workflow invocations.
+
+### Prepare history for phylogeny
+
+The `prepare_phylogeny_history.py` script collects the `SRR10828835_L8.fasta` (M. tuberculosis lineage 8) sequence from the West African TB history and gathers the concatenated consensus sequences from the `WA TB X working` histories and deposits them in a newly created history using a user-supplied name. The `WA TB X working` sequences are also collected into a list. This prepares for running the `M. tuberculosis phylogeny v 1.0` workflow which computes the SNP distance matrix and computes a phylogeny (using IQ-Tree).
 
 #### Further notes
 

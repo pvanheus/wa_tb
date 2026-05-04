@@ -10,13 +10,15 @@ if __name__ == "__main__":
     parser = make_parser("Invoke workflow on a Galaxy history.")
     parser.add_argument(
         "--workflow-name",
-        default="TB Variant Analysis v1.4.0 - dev - Mycobacterium kraken2 DB"
+        default="TB Variant Analysis v1.6.0"
     )
     parser.add_argument("history_name",
                         help="Name of the history to run the workflow on.")
     args = parser.parse_args()
     gi = galaxy.GalaxyInstance(url=args.galaxy_url, key=args.api_key)
-    history = gi.histories.get_histories(name=args.history_name)[0]
+    histories = gi.histories.get_histories(name=args.history_name)
+    assert len(histories) == 1, f"Expected exactly one history with name {args.history_name}, but found {len(histories)}."
+    history = histories[0]
     datasets = gi.histories.show_history(history["id"], contents=True)
     has_completed = False
     has_run = False
@@ -39,6 +41,7 @@ if __name__ == "__main__":
     if is_ready and (input_reads == {} or input_reference == {}):
         raise ValueError("Could not find required input datasets in history.")
     # TODO: use get_workflow_inputs to get the UUIDs of the inputs instead of names.
+    print("History:", history["name"], "Ready:", is_ready, "Has run:", has_run, "Has completed:", has_completed)
     if is_ready and not has_run:
         workflow = gi.workflows.get_workflows(name=args.workflow_name)[0]
         gi.workflows.invoke_workflow(

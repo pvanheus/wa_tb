@@ -42,6 +42,7 @@ if __name__ == '__main__':
             invocation_status = workflow_invocation["state"]
             invocation_summary = gi.invocations.get_invocation_summary(workflow_invocation["id"])
             completed_jobs = invocation_summary["states"].get("ok", 0)
-            workflow_name = latest_workflow_id_to_name[workflow_invocation['workflow_id']]
+            workflow_id = workflow_invocation['workflow_id'] 
+            workflow_name = latest_workflow_id_to_name.get(workflow_id, workflow_id)
         print(history["name"], history["id"], is_ready, has_run, has_completed,
               invocation_status, completed_jobs, workflow_name, sep="\t")

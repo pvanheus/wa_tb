@@ -9,4 +9,6 @@ version = "0.1.0"
 
 [dependencies]
 galaxy-parsec = ">=1.16.0,<2"
-bioblend = ">=1.7.0,<2"
+bioblend = ">=1.8.0,<2"
+ephemeris = ">=0.10.11,<0.11"
+ruff = ">=0.15.11,<0.16"
